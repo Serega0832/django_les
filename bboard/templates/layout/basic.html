@@ -16,7 +16,7 @@
             <a href="{% url 'index' %}">Главная</a>
             <a href="{% url 'add' %}">Добавить</a>
             {% for rubric in rubrics %}
-            <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
+            <a href="{% rubric.get_absolute_url %}">{{ rubric.name }}</a>
             {% endfor %}
         </nav>
         <section>

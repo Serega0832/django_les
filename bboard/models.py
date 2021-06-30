@@ -32,7 +32,8 @@ class Rubric(models.Model):
         verbose_name_plural = 'Рубрики'
         verbose_name = 'Рубрика'
         ordering = ['name']
-
+    def get_absolute_url(self):
+        return '/bboard/%s/' % self.pk
 
 class AdvUser(models.Model):
     is_activated = models.BooleanField(default=True)

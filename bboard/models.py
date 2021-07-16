@@ -19,6 +19,12 @@ class Bb(models.Model):
         verbose_name = 'Объявление'
         ordering = ['-published']
 
+    def title_and_price(self):
+        if self.price:
+            return '%s (%.2f)' % (self.title, self.price)
+        else:
+            return self.title
+
 
 class Rubric(models.Model):
     """
@@ -32,9 +38,15 @@ class Rubric(models.Model):
         verbose_name_plural = 'Рубрики'
         verbose_name = 'Рубрика'
         ordering = ['name']
+
     def get_absolute_url(self):
-        return '/bboard/%s/' % self.pk
+        return '/%s/' % self.pk
 
 class AdvUser(models.Model):
     is_activated = models.BooleanField(default=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+
+class Qqq(models.Model):
+    title = models.CharField(max_length=50, verbose_name='Название')
+    description = models.CharField(max_length=20000, default='Null',verbose_name='Описание')
